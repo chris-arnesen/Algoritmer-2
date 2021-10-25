@@ -42,8 +42,9 @@ public class Algoritmer2 extends Application {
         Button srcBtn = new Button("Search for value");
         Button deleteBtn = new Button("Delete value");
         Button insertBtn = new Button("Insert value");
-        
-        høyre.getChildren().addAll(input, srcBtn, deleteBtn, insertBtn);
+        Button randomValuesBtn = new Button("Insert random values"); //Vet ikke hva jeg skal kalle de her, eller skrive på dem
+        Button findValueNrBtn = new Button("Find value nr");  // samme her
+        høyre.getChildren().addAll(input, srcBtn, deleteBtn, insertBtn, randomValuesBtn, findValueNrBtn);
         
         høyre.setStyle("-fx-background-color: pink; -fx-border-color: black;");
         høyre.setPrefWidth(VBox_WIDTH);
@@ -61,6 +62,15 @@ public class Algoritmer2 extends Application {
         srcBtn.setPrefWidth(høyre.getWidth());
         deleteBtn.setPrefWidth(høyre.getWidth());
         insertBtn.setPrefWidth(høyre.getWidth());
+        randomValuesBtn.setPrefWidth(høyre.getWidth());
+        findValueNrBtn.setPrefWidth(høyre.getWidth());
+        
+        srcBtn.setStyle("-fx-background-color: rgb(240,240,240);");
+        deleteBtn.setStyle("-fx-background-color: rgb(230,230,230);");
+        insertBtn.setStyle("-fx-background-color: rgb(220,220,220);");
+        randomValuesBtn.setStyle("-fx-background-color: rgb(210,210,210);");
+        findValueNrBtn.setStyle("-fx-background-color: rgb(200,200,200);");
+        
     }
 
     /**
