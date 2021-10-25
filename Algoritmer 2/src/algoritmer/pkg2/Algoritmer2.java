@@ -35,8 +35,8 @@ public class Algoritmer2 extends Application {
         root = new BorderPane();
         root = new BorderPane();
         høyre = new HBox();
-        høyre.setStyle("-fx-background-color: pink;");
-        høyre.setPrefWidth(150);
+        høyre.setStyle("-fx-background-color: pink; -fx-border-color: black;");
+        høyre.setPrefWidth(250);
         høyre.setSpacing(10);
         høyre.setPadding(new Insets(10,10,10,10));
         
