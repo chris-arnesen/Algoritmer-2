@@ -8,8 +8,11 @@ package algoritmer.pkg2;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,13 +22,25 @@ import javafx.stage.Stage;
  */
 public class Algoritmer2 extends Application {
     
+    
+    
     protected final int WIDTH = 1000; 
     protected final int HEIGHT = 630; 
     
+    BorderPane root;
+    HBox høyre;
+    
     @Override
     public void start(Stage primaryStage) {
-        StackPane root = new StackPane();
+        root = new BorderPane();
+        root = new BorderPane();
+        høyre = new HBox();
+        høyre.setStyle("-fx-background-color: pink;");
+        høyre.setPrefWidth(150);
+        høyre.setSpacing(10);
+        høyre.setPadding(new Insets(10,10,10,10));
         
+        root.setRight(høyre);
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         
         primaryStage.setTitle("AVL-Tre");
