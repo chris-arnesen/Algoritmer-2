@@ -11,9 +11,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -26,26 +28,39 @@ public class Algoritmer2 extends Application {
     
     protected final int WIDTH = 1000; 
     protected final int HEIGHT = 630; 
+    protected final int VBox_WIDTH = 250;
     
     BorderPane root;
-    HBox høyre;
+    VBox høyre;
     
     @Override
     public void start(Stage primaryStage) {
         root = new BorderPane();
         root = new BorderPane();
-        høyre = new HBox();
+        høyre = new VBox();
+        TextField input = new TextField();
+        Button srcBtn = new Button("Search for value");
+        Button deleteBtn = new Button("Delete value");
+        Button insertBtn = new Button("Insert value");
+        
+        høyre.getChildren().addAll(input, srcBtn, deleteBtn, insertBtn);
+        
         høyre.setStyle("-fx-background-color: pink; -fx-border-color: black;");
-        høyre.setPrefWidth(250);
+        høyre.setPrefWidth(VBox_WIDTH);
         høyre.setSpacing(10);
         høyre.setPadding(new Insets(10,10,10,10));
         
         root.setRight(høyre);
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         
+        
+        
         primaryStage.setTitle("AVL-Tre");
         primaryStage.setScene(scene);
         primaryStage.show();
+        srcBtn.setPrefWidth(høyre.getWidth());
+        deleteBtn.setPrefWidth(høyre.getWidth());
+        insertBtn.setPrefWidth(høyre.getWidth());
     }
 
     /**
