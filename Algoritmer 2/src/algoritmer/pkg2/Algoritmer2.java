@@ -19,13 +19,16 @@ import javafx.stage.Stage;
  */
 public class Algoritmer2 extends Application {
     
+    protected final int WIDTH = 1000; 
+    protected final int HEIGHT = 630; 
+    
     @Override
     public void start(Stage primaryStage) {
         StackPane root = new StackPane();
         
-        Scene scene = new Scene(root, 1000, 630);
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
         
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("AVL-Tre");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
