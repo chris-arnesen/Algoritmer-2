@@ -76,6 +76,19 @@ public class Algoritmer2 extends Application {
         randomValuesBtn.setStyle("-fx-background-color: rgb(210,210,210);");
         findValueNrBtn.setStyle("-fx-background-color: rgb(200,200,200);");
         
+        insertBtn.setOnAction(e -> {
+            int key = Integer.parseInt(input.getText());
+            if (tree.search(key)) {
+                view.displayTree();
+                view.setStatus(key + "er alerede i treet");
+            } else {
+                tree.insert(key);
+                view.displayTree();
+                view.setStatus(key + "er satt inn i treet");
+            }
+        }
+        );
+        
     }
 
     /**
