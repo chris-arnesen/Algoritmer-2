@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -36,7 +37,6 @@ public class Algoritmer2 extends Application {
     @Override
     public void start(Stage primaryStage) {
         root = new BorderPane();
-        root = new BorderPane();
         høyre = new VBox();
         TextField input = new TextField();
         Button srcBtn = new Button("Search for value");
@@ -54,6 +54,11 @@ public class Algoritmer2 extends Application {
         root.setRight(høyre);
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         
+        BST<Integer> tree = new BST<>();
+        
+        BTView view = new BTView(tree);
+        
+        root.setCenter(view);
         
         
         primaryStage.setTitle("AVL-Tre");
