@@ -66,7 +66,7 @@ public class Algoritmer2 extends Application {
         Button deleteBtn = new Button("Delete value");
         Button insertBtn = new Button("Insert value");
         Button randomValuesBtn = new Button("Insert random values"); //Vet ikke hva jeg skal kalle de her, eller skrive på dem
-        Button findValueNrBtn = new Button("Find value nr");  // samme her
+        Button findValueNrBtn = new Button("O(logN)");  // samme her
         høyre.getChildren().addAll(input, srcBtn, deleteBtn, insertBtn, randomValuesBtn, findValueNrBtn);
         
         høyre.setStyle("-fx-background-color: pink; -fx-border-color: black;");
