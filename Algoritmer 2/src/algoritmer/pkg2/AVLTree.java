@@ -155,7 +155,7 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
         A.right = C.left; 
         B.left = C.right; 
         C.left = A; 
-        C.right = C; 
+        C.right = B; 
         
         updateHeight((AVLTreeNode<E>)A); 
         updateHeight((AVLTreeNode<E>)B); 
