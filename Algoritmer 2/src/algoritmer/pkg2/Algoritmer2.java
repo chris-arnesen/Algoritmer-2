@@ -170,7 +170,7 @@ public class Algoritmer2 extends Application {
             view.setStatus(nmb + " er alerede i treet");
             randomInsertion(n); // i tilfelle det tilfeldige tallet allerede har vært
         } else {
-            tree.insert(nmb);
+            tree.insert(nmb); 
             view.displayTree();
             view.setStatus(nmb + " er satt inn i treet");
             randomInsertion(n-1);
