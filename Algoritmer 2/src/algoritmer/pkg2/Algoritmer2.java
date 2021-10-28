@@ -113,6 +113,13 @@ public class Algoritmer2 extends Application {
             }
         }*/);
         randomValuesBtn.setOnAction(e -> randomInsertion(10));
+        
+        findValueNrBtn.setOnAction(e -> {
+            int k = (int) tree.find(5); //finner det 5 minste tallet
+            System.out.println(k);
+            view.displayTree();
+            view.setStatus(k + " er den 5. minste tallet");
+         });
     }
 
     /**

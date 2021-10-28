@@ -32,6 +32,7 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
             return false; 
         else 
             balancePath(e);
+        updateStr(); //O(log n)
         
         return true;
     }
@@ -212,12 +213,57 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
         }
         
         size--; 
+        updateStr(); //O(log n)
         return true;
     }
+    
+    //O(log n)
+    public E find (int k) {
+        if(k < 1 || k > size) {
+         return null;
+        }
+        else {
+            return find (k, (AVLTreeNode<E>) root);
+        }
+        
+      }
+    //O(log n)
+    public E find(int k, AVLTreeNode<E> node) {
+        AVLTreeNode<E> A = (AVLTreeNode<E>)node.left;
+        AVLTreeNode<E> B = (AVLTreeNode<E>)node.right;
+            if ((A == null)&&(k == 1)) {
+             return node.element;
+            } else if ((A == null)&&(k == 2)) {
+             return B.element;
+            } else if(k <= A.size) {    
+             return find(k, A);
+            } else if(k == A.size + 1) {
+             return node.element;
+            } else {
+             return find(k - A.size - 1, B);
+            }
+    }
+    
+    //O(log n)
+    public void updateStr() {
+    updateStr((AVLTreeNode<E>) root);
+    }
+  
+    private int updateStr(AVLTreeNode<E> node) {
+    if (node == null) {
+    return 0;
+    } else {
+    node.size = 1 + updateStr((AVLTreeNode<E>)(node.left)) + updateStr((AVLTreeNode<E>)(node.right));
+    return node.size;
+    }
+  }
+            
+             
     
     
     protected static class AVLTreeNode<E> extends BST.TreeNode<E> {
         protected int height = 0; 
+        protected int size = 0;
         public AVLTreeNode(E e) {
             super(e);
         }
