@@ -21,6 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javax.lang.model.element.Element;
+import java.util.Random;
 
 /**
  *
@@ -54,6 +55,8 @@ public class Algoritmer2 extends Application {
         rb_string.setToggleGroup(tg);
         rb_int = new RadioButton("Integer");
         rb_int.setToggleGroup(tg);
+     
+        
         høyre.getChildren().addAll(rb_string, rb_int);
         /*if(rb_string)
             tree = new AVLTree<String>();
@@ -99,6 +102,21 @@ public class Algoritmer2 extends Application {
         randomValuesBtn.setStyle("-fx-background-color: rgb(210,210,210);");
         findValueNrBtn.setStyle("-fx-background-color: rgb(200,200,200);");
         
+        //Fjerner den motsatte av den RB som er aktiv
+        rb_int.setOnAction(e -> {
+             høyre.getChildren().remove(rb_string); 
+        });
+        
+        /* vi fjerner ologn knappen dersom string er valgt fordi oppgaven
+        beskriver at ologn algoritmen skal bruke tall og ikke stringer
+        */
+        rb_string.setOnAction(e -> {
+             høyre.getChildren().remove(rb_int); 
+             høyre.getChildren().remove(findValueNrBtn);
+        });
+        
+        
+        
         srcBtn.setOnAction(e -> btnSearch(input));
         deleteBtn.setOnAction(e -> btnDelete(input));
         insertBtn.setOnAction(e -> btnInsert(input)/*{
@@ -121,7 +139,11 @@ public class Algoritmer2 extends Application {
             view.displayTree();
             view.setStatus(k + " er det "+ tall +". minste tallet");
          });
+        
+         
     }
+    
+
 
     /**
      * @param args the command line arguments
@@ -132,6 +154,7 @@ public class Algoritmer2 extends Application {
     
     
     protected void btnSearch(TextField inp) {
+        if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
         if(tree.search(key)) {
             view.displayTree();
@@ -141,9 +164,21 @@ public class Algoritmer2 extends Application {
             view.displayTree();
             view.setStatus(key + " er ikke funnet");
         }
+        } else if(rb_string.isSelected()) {
+            String key = (input.getText());
+        if(tree.search(key)) {
+            view.displayTree();
+            view.setStatus(key + " er funnet");
+        }
+        else {
+            view.displayTree();
+            view.setStatus(key + " er ikke funnet");
+        }
+        }
     }
     
     protected void btnDelete(TextField inp) {
+        if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
         if(tree.delete(key)) {
             view.displayTree();
@@ -151,21 +186,43 @@ public class Algoritmer2 extends Application {
         } else {
             view.displayTree();
             view.setStatus("Kunne ikke slette " + key);
+            }
+        } else if(rb_string.isSelected()) {
+            String key = (input.getText());
+        if(tree.delete(key)) {
+            view.displayTree();
+            view.setStatus(key + " ble slettet");
+        } else {
+            view.displayTree();
+            view.setStatus("Kunne ikke slette " + key);
+            }
         }
     }
     
     protected void btnInsert(TextField inp) {
+        if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
-        if (tree.search(key)) {
-            view.displayTree();
-            view.setStatus(key + " er alerede i treet");
-        } else {
-            tree.insert(key);
-            view.displayTree();
-            view.setStatus(key + " er satt inn i treet");
+            if (tree.search(key)) {
+             view.displayTree();
+             view.setStatus(key + " er alerede i treet");
+            } else {
+             tree.insert(key);
+             view.displayTree();
+             view.setStatus(key + " er satt inn i treet");
+            }
+        } else if(rb_string.isSelected()) {
+            String key = (input.getText());
+            if (tree.search(key)) {
+             view.displayTree();
+             view.setStatus(key + " er alerede i treet");
+            } else {
+             tree.insert(key);
+             view.displayTree();
+             view.setStatus(key + " er satt inn i treet");
+            }
         }
     }
-    
+    /*
     protected void randomInsertion(int n) {
         if(n == 0)
             return;
@@ -184,5 +241,37 @@ public class Algoritmer2 extends Application {
             randomInsertion(n-1);
         }
     }
-    
+    */
+    protected void randomInsertion(int n) {
+        if(n == 0)
+            return;
+
+        if (rb_string.isSelected()) {
+            int ranNumber = (int)(Math.random()*10)+1;
+            String bokstaver = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String returString = "";
+            for (int i = 0; i < ranNumber; i++) {
+                char c = bokstaver.charAt(new Random().nextInt(bokstaver.length()));
+                returString +=c;
+            }
+            tree.insert(returString);
+            view.displayTree();
+            view.setStatus("Verdi: '" + returString + "' er satt inn i treet");
+            randomInsertion(n-1);
+        } else {
+            int max = 100, min = 1, range = max - min + 1; 
+            int nmb = (int)(Math.random() * range) + min;
+
+            if (tree.search(nmb)) {
+                view.displayTree();
+                view.setStatus(nmb + " er alerede i treet");
+                randomInsertion(n); // i tilfelle det tilfeldige tallet allerede har vært
+            } else {
+                tree.insert(nmb); 
+                view.displayTree();
+                view.setStatus(nmb + " er satt inn i treet");
+                randomInsertion(n-1);
+            }
+        }
+    }
 }
