@@ -222,26 +222,7 @@ public class Algoritmer2 extends Application {
             }
         }
     }
-    /*
-    protected void randomInsertion(int n) {
-        if(n == 0)
-            return;
-        
-        int max = 100, min = 1, range = max - min + 1; 
-        int nmb = (int)(Math.random() * range) + min;
-        
-        if (tree.search(nmb)) {
-            view.displayTree();
-            view.setStatus(nmb + " er alerede i treet");
-            randomInsertion(n); // i tilfelle det tilfeldige tallet allerede har vært
-        } else {
-            tree.insert(nmb); 
-            view.displayTree();
-            view.setStatus(nmb + " er satt inn i treet");
-            randomInsertion(n-1);
-        }
-    }
-    */
+ 
     protected void randomInsertion(int n) {
         if(n == 0)
             return;

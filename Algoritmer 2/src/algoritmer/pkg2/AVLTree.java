@@ -228,17 +228,17 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
         
       }
     //O(log n)
-    public E find(int k, AVLTreeNode<E> node) {
-        AVLTreeNode<E> A = (AVLTreeNode<E>)node.left;
-        AVLTreeNode<E> B = (AVLTreeNode<E>)node.right;
+    public E find(int k, AVLTreeNode<E> root) {
+        AVLTreeNode<E> A = (AVLTreeNode<E>)root.left;
+        AVLTreeNode<E> B = (AVLTreeNode<E>)root.right;
             if ((A == null)&&(k == 1)) {
-             return node.element;
+             return root.element;
             } else if ((A == null)&&(k == 2)) {
              return B.element;
             } else if(k <= A.size) {    
              return find(k, A);
             } else if(k == A.size + 1) {
-             return node.element;
+             return root.element;
             } else {
              return find(k - A.size - 1, B);
             }
@@ -249,12 +249,12 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
     updateStr((AVLTreeNode<E>) root);
     }
   
-    private int updateStr(AVLTreeNode<E> node) {
-    if (node == null) {
+    private int updateStr(AVLTreeNode<E> root) {
+    if (root == null) {
     return 0;
     } else {
-    node.size = 1 + updateStr((AVLTreeNode<E>)(node.left)) + updateStr((AVLTreeNode<E>)(node.right));
-    return node.size;
+    root.size = 1 + updateStr((AVLTreeNode<E>)(root.left)) + updateStr((AVLTreeNode<E>)(root.right));
+    return root.size;
     }
   }
             
