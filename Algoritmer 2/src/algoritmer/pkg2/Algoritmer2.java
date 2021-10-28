@@ -115,10 +115,11 @@ public class Algoritmer2 extends Application {
         randomValuesBtn.setOnAction(e -> randomInsertion(10));
         
         findValueNrBtn.setOnAction(e -> {
-            int k = (int) tree.find(5); //finner det 5 minste tallet
+            int tall = Integer.parseInt(input.getText());
+            int k = (int) tree.find(tall); //finner det minste tallet fra input
             System.out.println(k);
             view.displayTree();
-            view.setStatus(k + " er den 5. minste tallet");
+            view.setStatus(k + " er det "+ tall +". minste tallet");
          });
     }
 
