@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"algoritmer.pkg2"},{"l":"All Packages","url":"allpackages-index.html"}]

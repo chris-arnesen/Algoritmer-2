@@ -9,7 +9,7 @@ import java.util.Collection;
 
 /**
  *
- * @author christofferstrandarnesen, Mats jørgen Engesesund, Jacob Kristensen 
+ * @author Mats Engesund
  */
 public interface Tree<E> extends Collection<E> {
     

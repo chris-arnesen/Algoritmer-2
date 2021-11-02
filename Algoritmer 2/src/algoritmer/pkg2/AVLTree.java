@@ -7,7 +7,7 @@ package algoritmer.pkg2;
 
 /**
  *
- * @author christofferstrandarnesen, Mats jørgen Engesesund, Jacob Kristensen
+ * @author Mats Engesund
  * @param <E>
  */
 public class AVLTree<E extends Comparable<E>> extends BST<E> {
@@ -32,7 +32,7 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
             return false; 
         else 
             balancePath(e);
-        updateStr();
+        updateStr(); //O(log n)
         
         return true;
     }
@@ -213,11 +213,11 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
         }
         
         size--; 
-        updateStr();
+        updateStr(); //O(log n)
         return true;
     }
     
-    
+    //O(log n)
     public E find (int k) {
         if(k < 1 || k > size) {
          return null;
@@ -227,7 +227,7 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
         }
         
       }
-    
+    //O(log n)
     public E find(int k, AVLTreeNode<E> root) {
         AVLTreeNode<E> A = (AVLTreeNode<E>)root.left;
         AVLTreeNode<E> B = (AVLTreeNode<E>)root.right;
@@ -244,7 +244,7 @@ public class AVLTree<E extends Comparable<E>> extends BST<E> {
             }
     }
     
-    
+    //O(log n)
     public void updateStr() {
     updateStr((AVLTreeNode<E>) root);
     }

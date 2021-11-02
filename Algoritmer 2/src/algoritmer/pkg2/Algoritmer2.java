@@ -25,61 +25,25 @@ import java.util.Random;
 
 /**
  *
- * @author christofferstrandarnesen, Mats jørgen Engesesund, Jacob Kristensen */
+ * @author christofferstrandarnesen
+ */
 public class Algoritmer2 extends Application {
     
-    /**
-     *
-     */
     protected TextField input;
-
-    /**
-     *
-     */
     protected BTView view;
-
-    /**
-     *
-     */
     protected AVLTree tree;
     
-    /**
-     *
-     */
     protected ToggleGroup tg;
-
-    /**
-     *
-     */
     protected RadioButton rb_string;
-
-    /**
-     *
-     */
     protected RadioButton rb_int; 
     
-    /**
-     *
-     */
     protected final int WIDTH = 1000; 
-
-    /**
-     *
-     */
     protected final int HEIGHT = 630; 
-
-    /**
-     *
-     */
     protected final int VBox_WIDTH = 250;
     
     BorderPane root;
     VBox høyre;
     
-    /**
-     *
-     * @param primaryStage
-     */
     @Override
     public void start(Stage primaryStage) {
         root = new BorderPane();
@@ -94,13 +58,18 @@ public class Algoritmer2 extends Application {
      
         
         høyre.getChildren().addAll(rb_string, rb_int);
-     
+        /*if(rb_string)
+            tree = new AVLTree<String>();
+        else if(rb_int.isSelected()) {
+            tree = new AVLTree<Integer>();
+            System.out.println("integer er trykket");
+        }*/
         
         Button srcBtn = new Button("Search for value");
         Button deleteBtn = new Button("Delete value");
         Button insertBtn = new Button("Insert value");
-        Button randomValuesBtn = new Button("Insert random values"); 
-        Button findValueNrBtn = new Button("O(logN)"); 
+        Button randomValuesBtn = new Button("Insert random values"); //Vet ikke hva jeg skal kalle de her, eller skrive på dem
+        Button findValueNrBtn = new Button("O(logN)");  // samme her
         høyre.getChildren().addAll(input, srcBtn, deleteBtn, insertBtn, randomValuesBtn, findValueNrBtn);
         
         høyre.setStyle("-fx-background-color: pink; -fx-border-color: black;");
@@ -150,7 +119,17 @@ public class Algoritmer2 extends Application {
         
         srcBtn.setOnAction(e -> btnSearch(input));
         deleteBtn.setOnAction(e -> btnDelete(input));
-        insertBtn.setOnAction(e -> btnInsert(input));
+        insertBtn.setOnAction(e -> btnInsert(input)/*{
+            int key = Integer.parseInt(input.getText());
+            if (tree.search(key)) {
+                view.displayTree();
+                view.setStatus(key + "er alerede i treet");
+            } else {
+                tree.insert(key);
+                view.displayTree();
+                view.setStatus(key + "er satt inn i treet");
+            }
+        }*/);
         randomValuesBtn.setOnAction(e -> randomInsertion(10));
         
         findValueNrBtn.setOnAction(e -> {
@@ -173,10 +152,7 @@ public class Algoritmer2 extends Application {
         launch(args);
     }
     
-    /**
-     *
-     * @param inp
-     */
+    
     protected void btnSearch(TextField inp) {
         if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
@@ -201,10 +177,6 @@ public class Algoritmer2 extends Application {
         }
     }
     
-    /**
-     *
-     * @param inp
-     */
     protected void btnDelete(TextField inp) {
         if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
@@ -227,10 +199,6 @@ public class Algoritmer2 extends Application {
         }
     }
     
-    /**
-     *
-     * @param inp
-     */
     protected void btnInsert(TextField inp) {
         if(rb_int.isSelected()) {
         int key = Integer.parseInt(input.getText());
@@ -255,10 +223,6 @@ public class Algoritmer2 extends Application {
         }
     }
  
-    /**
-     *
-     * @param n
-     */
     protected void randomInsertion(int n) {
         if(n == 0)
             return;

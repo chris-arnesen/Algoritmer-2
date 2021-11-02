@@ -5,8 +5,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
-/* @author christofferstrandarnesen, Mats jørgen Engesesund, Jacob Kristensen */
-
 public class BTView extends Pane {
   private BST<Integer> tree = new BST<>();
   private double radius = 15; // Tree node radius
