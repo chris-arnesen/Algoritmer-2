@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"algoritmer.pkg2","l":"Algoritmer2"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"algoritmer.pkg2","l":"AVLTree"},{"p":"algoritmer.pkg2","l":"AVLTree.AVLTreeNode"},{"p":"algoritmer.pkg2","l":"BST"},{"p":"algoritmer.pkg2","l":"BTView"},{"p":"algoritmer.pkg2","l":"Tree"},{"p":"algoritmer.pkg2","l":"BST.TreeNode"}]
